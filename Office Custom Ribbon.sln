@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excel Custom Ribbon", "Excel Custom Ribbon\Excel Custom Ribbon.csproj", "{C9F357AF-9CE8-418E-8300-4F32D2F68F54}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Word Custom Ribbon", "Word Custom Ribbon\Word Custom Ribbon.csproj", "{9FDBFA25-C057-48CF-9CBA-6B9EA9E8D43C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C9F357AF-9CE8-418E-8300-4F32D2F68F54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9F357AF-9CE8-418E-8300-4F32D2F68F54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9F357AF-9CE8-418E-8300-4F32D2F68F54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FDBFA25-C057-48CF-9CBA-6B9EA9E8D43C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FDBFA25-C057-48CF-9CBA-6B9EA9E8D43C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FDBFA25-C057-48CF-9CBA-6B9EA9E8D43C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FDBFA25-C057-48CF-9CBA-6B9EA9E8D43C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
