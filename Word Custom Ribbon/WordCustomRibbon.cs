@@ -19,6 +19,11 @@ namespace Word_Custom_Ribbon
         {
         }
 
+        protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
+        {
+            return new WordRibbon();
+        }
+
         #region VSTO generated code
 
         /// <summary>
