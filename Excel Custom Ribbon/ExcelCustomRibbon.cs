@@ -19,6 +19,11 @@ namespace Excel_Custom_Ribbon
         {
         }
 
+        protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
+        {
+            return new ExcelRibbon();
+        }
+
         #region VSTO generated code
 
         /// <summary>
