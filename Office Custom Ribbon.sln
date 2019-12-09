@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excel Custom Ribbon", "Exce
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Word Custom Ribbon", "Word Custom Ribbon\Word Custom Ribbon.csproj", "{9FDBFA25-C057-48CF-9CBA-6B9EA9E8D43C}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Office Custom Ribbon Setup x64", "Office Custom Ribbon Setup x64\Office Custom Ribbon Setup x64.vdproj", "{4C54E52C-740B-4E48-BCFD-55286095BEAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9FDBFA25-C057-48CF-9CBA-6B9EA9E8D43C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FDBFA25-C057-48CF-9CBA-6B9EA9E8D43C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FDBFA25-C057-48CF-9CBA-6B9EA9E8D43C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C54E52C-740B-4E48-BCFD-55286095BEAA}.Debug|Any CPU.ActiveCfg = Debug
+		{4C54E52C-740B-4E48-BCFD-55286095BEAA}.Debug|Any CPU.Build.0 = Debug
+		{4C54E52C-740B-4E48-BCFD-55286095BEAA}.Release|Any CPU.ActiveCfg = Release
+		{4C54E52C-740B-4E48-BCFD-55286095BEAA}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
