@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
 using Office = Microsoft.Office.Core;
+using Excel = Microsoft.Office.Interop.Excel;
 
 // TODO:  Follow these steps to enable the Ribbon (XML) item:
 
@@ -51,12 +49,90 @@ namespace Excel_Custom_Ribbon
 
         public void LoadExcelRibbon(Office.IRibbonUI ribbonUI)
         {
-            this.ribbon = ribbonUI;
+            ribbon = ribbonUI;
+        }
+
+        public void setDateFormat(Office.IRibbonControl control)
+        {
+            string style = "Date";
+            string format = "[$-409]d-mmm-yyyy_);@_)";
+            applyStyle(style, format);
+        }
+
+        public void setRsFormat(Office.IRibbonControl control)
+        {
+            string style = "Currency Rs.";
+            string format = "_(\"Rs.\"* #,##0.00_);_(\"Rs.\"* - #,##0.00_);_(\"Rs.\"* - ??_);_(@_)";
+            applyStyle(style, format);
+        }
+        
+        public void setINRFormat(Office.IRibbonControl control)
+        {
+            string style = "Currency ₹";
+            string format = "_(₹* #,##0.00_);_(₹* - #,##0.00_);_(₹* - ??_);_(@_)";
+            applyStyle(style, format);
+        }
+
+        public void setPoundFormat(Office.IRibbonControl control)
+        {
+            string style = "Currency £";
+            string format = "_(£* #,##0.00_);_(£* - #,##0.00_);_(£* - ??_);_(@_)";
+            applyStyle(style, format);
+        }
+        public void setEuroFormat(Office.IRibbonControl control)
+        {
+            string style = "Currency €";
+            string format = "_(€* #,##0.00_);_(€* - #,##0.00_);_(€* - ??_);_(@_)";
+            applyStyle(style, format);
+        }
+
+        public stdole.IPictureDisp GetImage(string imageName)
+        {
+            switch (imageName)
+            {
+                case "Euro":
+                    return PictureConverter.ImageToPictureDisp(Properties.Resources.Euro);
+
+                case "Pound":
+                    return PictureConverter.ImageToPictureDisp(Properties.Resources.Pound);
+
+                case "Rs":
+                    return PictureConverter.ImageToPictureDisp(Properties.Resources.Rs);
+
+                case "Inr":
+                    return PictureConverter.ImageToPictureDisp(Properties.Resources.Inr);
+
+                default:
+                    return null;
+            }
         }
 
         #endregion
 
         #region Helpers
+
+        private void applyStyle(string style, string format)
+        {
+            Excel.Range xRange = Globals.ExcelCustomRibbon.Application.Selection;
+            try
+            {
+                xRange.Style = style;
+
+            }
+            catch (Exception e) when (e.Message.Contains("Style '" + style + "' not found."))
+            {
+                Excel.Style dateStyle = Globals.ExcelCustomRibbon.Application.ActiveWorkbook.Styles.Add(style);
+                dateStyle.IncludeAlignment = false;
+                dateStyle.IncludeBorder = false;
+                dateStyle.IncludeFont = false;
+                dateStyle.IncludeNumber = true;
+                dateStyle.NumberFormat = format;
+                dateStyle.IncludePatterns = false;
+                dateStyle.IncludeProtection = false;
+
+                xRange.Style = style;
+            }
+        }
 
         private static string GetResourceText(string resourceName)
         {
