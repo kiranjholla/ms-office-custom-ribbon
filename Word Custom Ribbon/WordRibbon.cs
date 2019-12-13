@@ -41,7 +41,7 @@ namespace Word_Custom_Ribbon
 
         public string GetCustomUI(string ribbonID)
         {
-            return GetResourceText("Word_Custom_Ribbon.Ribbon1.xml");
+            return GetResourceText("Word_Custom_Ribbon.WordRibbon.xml");
         }
 
         #endregion
