@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Thanks to 
+  Packing Add-Ins using Wix Installer:    https://stackoverflow.com/a/55836005
+  Setting up an x64 Installer Config:     https://stackoverflow.com/a/18630847
+  Requesting Admin Access while Install:  https://stackoverflow.com/a/17109314
+  Solving 64-bit in 32-bit folder error:  https://stackoverflow.com/a/16180967
+  Adding proper License text for install: https://stackoverflow.com/a/41872918
+  For the MIT License text itself:        https://opensource.org/licenses/MIT
+-->
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+	<Product Id="*" Name="Office Custom Ribbon" Language="1033" Version="3.0.0.0" Manufacturer="Kiran J. Holla" UpgradeCode="c1489b63-ab9e-4fc0-a39a-2dae93854b72">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" InstallPrivileges="elevated" />
+
+    <WixVariable Id="WixUILicenseRtf" Value="mit.rtf" />
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <!--MediaTemplate /-->
+
+    <!-- Verify if VSTO Office Runtime is installed -->
+    <Property Id="VSTORUNTIMEREDIST">
+      <RegistrySearch
+        Id="VSTORuntimeRedist"
+        Root="HKLM"
+        Key="SOFTWARE\Microsoft\VSTO Runtime Setup\v4R"
+        Name="Version"
+        Type="raw" />
+    </Property>
+
+    <!--Condition
+      Message="The Visual Studio 2010 Tools for Office Runtime is not installed. 
+  Please download and install from https://www.microsoft.com/en-us/download/details.aspx?id=48217.">
+      <![CDATA[Installed OR VSTORUNTIMEREDIST>="10.0.30319"]]>
+    </Condition-->
+
+    <!-- Verify if .NET Framework is installed -->
+    <PropertyRef Id="NETFRAMEWORK40FULL"/>
+    <Condition Message="This application requires .NET Framework 4.0.">
+      <![CDATA[Installed OR NETFRAMEWORK40FULL]]>
+    </Condition>
+
+    <!--I want one Cab file, so only one Media element is needed. Make sure the EmbedCab attribute value is "yes".-->
+    <Media Id="1" Cabinet="Ribbon.cab" EmbedCab="yes"/>
+
+    <Feature Id="ProductFeature" Title="Office Custom Ribbon" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+      <ComponentRef Id="Registry_Excel_FriendlyName" />
+      <ComponentRef Id="Registry_Excel_Description" />
+      <ComponentRef Id="Registry_Excel_Manifest" />
+      <ComponentRef Id="Registry_Excel_LoadBehavior" />
+      <ComponentRef Id="Registry_Word_FriendlyName" />
+      <ComponentRef Id="Registry_Word_Description" />
+      <ComponentRef Id="Registry_Word_Manifest" />
+      <ComponentRef Id="Registry_Word_LoadBehavior" />
+    </Feature>
+
+    <!--Specify that the WiXUI_Minimal UI should be used, i.e, the simplest UI available -->
+    <UIRef Id="WixUI_Minimal" />
+  </Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFiles64Folder">
+        <Directory Id="MANUFACTURERFOLDER" Name="Kiran J. Holla">
+          <Directory Id="INSTALLFOLDER" Name="Office Custom Ribbon" />
+          <Component Id="Registry_Excel_FriendlyName">
+            <RegistryValue Id="RegKey_Excel_FriendlyName" Root="HKLM"
+                           Key="Software\Microsoft\Office\Excel\AddIns\Word Custom Ribbon"
+                           Name="FriendlyName"
+                           Value="Excel Custom Ribbon"
+                           Type="string" KeyPath="yes" />
+          </Component>
+          <Component Id="Registry_Word_FriendlyName">
+            <RegistryValue Id="RegKey_Word_FriendlyName" Root="HKLM"
+                           Key="Software\Microsoft\Office\Word\AddIns\Word Custom Ribbon"
+                           Name="FriendlyName"
+                           Value="Word Custom Ribbon"
+                           Type="string" KeyPath="yes" />
+          </Component>
+          <Component Id="Registry_Excel_Description">
+            <RegistryValue Id="RegKey_Excel_Description" Root="HKLM"
+                           Key="Software\Microsoft\Office\Excel\AddIns\Excel Custom Ribbon"
+                           Name="Description"
+                           Value="Excel Custom Ribbon"
+                           Type="string" KeyPath="yes" />
+          </Component>
+          <Component Id="Registry_Word_Description">
+            <RegistryValue Id="RegKey_Word_Description" Root="HKLM"
+                           Key="Software\Microsoft\Office\Word\AddIns\Word Custom Ribbon"
+                           Name="Description"
+                           Value="Word Custom Ribbon"
+                           Type="string" KeyPath="yes" />
+          </Component>
+          <Component Id="Registry_Excel_Manifest">
+            <RegistryValue Id="RegKey_Excel_Manifest" Root="HKLM"
+                           Key="Software\Microsoft\Office\Excel\AddIns\Excel Custom Ribbon"
+                           Name="Manifest" Value="[INSTALLFOLDER]Excel Custom Ribbon.vsto|vstolocal"
+                           Type="string" KeyPath="yes" />
+          </Component>
+          <Component Id="Registry_Word_Manifest">
+            <RegistryValue Id="RegKey_Word_Manifest" Root="HKLM"
+                           Key="Software\Microsoft\Office\Word\AddIns\Word Custom Ribbon"
+                           Name="Manifest" Value="[INSTALLFOLDER]Word Custom Ribbon.vsto|vstolocal"
+                           Type="string" KeyPath="yes" />
+          </Component>
+          <Component Id="Registry_Excel_LoadBehavior">
+            <RegistryValue Id="RegKey_Excel_LoadBehavior" Root="HKLM"
+                           Key="Software\Microsoft\Office\Excel\AddIns\Excel Custom Ribbon"
+                           Name="LoadBehavior" Value="3"
+                           Type="integer" KeyPath="yes" />
+          </Component>
+          <Component Id="Registry_Word_LoadBehavior">
+            <RegistryValue Id="RegKey_Word_LoadBehavior" Root="HKLM"
+                           Key="Software\Microsoft\Office\Word\AddIns\Word Custom Ribbon"
+                           Name="LoadBehavior" Value="3"
+                           Type="integer" KeyPath="yes" />
+          </Component>
+        </Directory>
+      </Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+
+      <Component Id="MSOfficeToolsCommon_dll_Component">
+        <File Id="MSOfficeToolsCommon_dll" KeyPath="yes"
+          Name="Microsoft.Office.Tools.Common.v4.0.Utilities.dll"
+          Source="$(var.ExcelFiles)"></File>
+      </Component>
+
+      <Component Id="Excel_dll_Component" >
+        <File Id="Excel_dll" KeyPath="yes"
+              Name="Excel Custom Ribbon.dll"
+              Source="$(var.ExcelFiles)" />
+      </Component>
+
+      <Component Id="Word_dll_Component" >
+        <File Id="Word_dll" KeyPath="yes"
+              Name="Word Custom Ribbon.dll"
+              Source="$(var.WordFiles)" />
+      </Component>
+
+      <Component Id="Excel_vsto_Component">
+        <File Id="Excel_vsto" KeyPath="yes"
+          Name="Excel Custom Ribbon.vsto"
+          Source="$(var.ExcelFiles)"></File>
+      </Component>
+
+      <Component Id="Word_vsto_Component">
+        <File Id="Word_vsto" KeyPath="yes"
+          Name="Word Custom Ribbon.vsto"
+          Source="$(var.WordFiles)"></File>
+      </Component>
+
+      <Component Id="Excel_dll_manifest_Component">
+        <File Id="Excel_dll_manifest" KeyPath="yes"
+          Name="Excel Custom Ribbon.dll.manifest"
+          Source="$(var.ExcelFiles)"></File>
+      </Component>
+
+      <Component Id="Word_dll_manifest_Component">
+        <File Id="Word_dll_manifest" KeyPath="yes"
+          Name="Word Custom Ribbon.dll.manifest"
+          Source="$(var.WordFiles)"></File>
+      </Component>
+
+      <!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+			<!-- <Component Id="ProductComponent"> -->
+				<!-- TODO: Insert files, registry keys, and other resources here. -->
+			<!-- </Component> -->
+		</ComponentGroup>
+	</Fragment>
+</Wix>
