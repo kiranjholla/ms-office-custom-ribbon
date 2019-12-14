@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="LoadExcelRibbon" loadImage="GetImage">
+  <ribbon>
+    <tabs>
+      <tab id="CustomTab" label="My Tab" insertBeforeMso="TabHome">
+        <group id="GroupStandard" label="Standard Controls">
+          <box id="BoxFileOp" boxStyle="vertical">
+            <button idMso="FileNew" showLabel="false"/>
+            <button idMso="FileOpen" showLabel="false"/>
+            <button idMso="FileClose" showLabel="false"/>
+          </box>
+          <separator id="sep1"/>
+          <box id="BoxSaveOp" boxStyle="vertical">
+            <button idMso="FileSave" showLabel="false"/>
+            <button idMso="FileSaveAsOtherFormats" showLabel="false"/>
+            <button idMso="FileSendAsAttachment" showLabel="false"/>
+          </box>
+          <separator id="sep2"/>
+          <box id="BoxPrintOp" boxStyle="vertical">
+            <button idMso="PageSetupPageDialog" showLabel="false"/>
+            <button idMso="FilePrintQuick" showLabel="false"/>
+            <button idMso="FilePrintPreview" showLabel="false"/>
+          </box>
+        </group>
+        <group id="GroupFormatting" label="Format Controls">
+          <box id="BoxFontOp" boxStyle="horizontal">
+            <control idMso="Font" showLabel="false"/>
+            <control idMso="FontSize" showLabel="false"/>
+            <buttonGroup id="BGFontSize" visible="true">
+              <button idMso="FontSizeIncrease" showLabel="false"/>
+              <button idMso="FontSizeDecrease" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGFontColor" visible="true">
+              <control idMso="CellFillColorPicker" showLabel="false"/>
+              <control idMso="FontColorPicker" showLabel="false"/>
+            </buttonGroup>
+          </box>
+          <box id="BoxFormatOp1" boxStyle="horizontal">
+            <comboBox idMso="NumberFormatGallery"/>
+            <buttonGroup id="BGCurrencyStyles" visible="true">
+              <splitButton idMso="AccountingFormatMenu" showLabel="false"/>
+              <button id="PoundStyle" image="Pound" showImage="true" screentip="Pound Format" onAction="setPoundFormat"/>
+              <button id="EuroStyle" image="Euro" showImage="true" screentip="Euro Format" onAction="setEuroFormat"/>
+              <button id="INRStyle" image="Inr" showImage="true" screentip="INR Format" onAction="setINRFormat"/>
+              <button id="RsStyle" image="Rs" showImage="true" screentip="Rupees Format" onAction="setRsFormat"/>
+            </buttonGroup>
+            <buttonGroup id="BGOtherStyles" visible="true">
+              <button id="DateStyle" imageMso="HeaderFooterCurrentDate" tag="Date" screentip="Date Format" onAction="setDateFormat"/>
+              <button idMso="PercentStyle" showLabel="false"/>
+              <button idMso="CommaStyle" showLabel="false"/>
+            </buttonGroup>
+          </box>
+          <box id="BoxFormatOp2" boxStyle="horizontal">
+            <buttonGroup id="BGFontStyles" visible="true">
+              <toggleButton idMso="Bold" showLabel="false"/>
+              <toggleButton idMso="Italic" showLabel="false"/>
+              <splitButton idMso="UnderlineGallery"/>
+              <toggleButton idMso="Strikethrough" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGDecimals" visible="true">
+              <button idMso="DecimalsIncrease" showLabel="false"/>
+              <button idMso="DecimalsDecrease" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGFormatMenus" visible="true">
+              <menu idMso="FormatCellsMenu" showLabel="false"/>
+              <menu idMso="ClearMenu" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGFormatPainter" visible="true">
+              <control idMso="FormatPainter" showLabel="false"/>
+            </buttonGroup>
+          </box>
+          <separator id="sep3"/>
+          <box id="BoxFormatOp3" boxStyle="vertical">
+            <buttonGroup id="BGConditionalFormat" visible="true">
+              <menu idMso="ConditionalFormattingMenu" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGCellStylesGallery" visible="true">
+              <control idMso="CellStylesGallery" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGBordersGallery" visible="true">
+              <splitButton idMso="BordersGallery" showLabel="false"/>
+            </buttonGroup>
+          </box>
+        </group>
+        <group id="GroupEdit" label="Edit">
+          <splitButton idMso="PasteMenu" showLabel="false"/>
+          <button idMso="Copy" showLabel="false"/>
+          <button idMso="Cut" showLabel="false"/>
+        </group>
+        <group idMso="GroupAlignmentExcel"/>
+        <group id="GroupLayout" label="Layout">
+          <splitButton idMso="InsertCellstMenu" showLabel="false"/>
+          <splitButton idMso="TableDeleteRowsAndColumnsMenu" showLabel="false"/>
+          <toggleButton idMso="ViewGridlinesToggleExcel" showLabel="false"/>
+          <separator id="sep4"/>
+          <control idMso="ViewFreezePanesGallery" showLabel="false"/>
+          <menu idMso="PageBreakMenu" showLabel="false"/>
+          <toggleButton idMso="SelectionPane" showLabel="false"/>
+        </group>
+        <group id="GroupFormula" label="Formulae and Data">
+          <box id="BoxFormula" boxStyle="horizontal">
+            <buttonGroup id="BGFunctions" visible="true">
+              <splitButton idMso="AutoSumMenu" showLabel="false"/>
+              <control idMso="FunctionWizard" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGCalculate" visible="true">
+              <control idMso="CalculationOptionsMenu" showLabel="false"/>
+              <button idMso="NameManager" showLabel="false"/>
+            </buttonGroup>
+          </box>
+          <box id="BoxData" boxStyle="horizontal">
+            <buttonGroup id="BGData" visible="true">
+              <splitButton idMso="DataValidationMenu" showLabel="false"/>
+              <control idMso="SortDialog" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGPivotAndChart" visible="true">
+              <splitButton idMso="PivotTableInsertMenu" showLabel="false"/>
+              <control idMso="ChartTypeAllInsertDialog" showLabel="false"/>
+            </buttonGroup>
+          </box>
+          <box id="BoxFilter" boxStyle="horizontal">
+            <buttonGroup id="BGAutoFilter" visible="true">
+              <control idMso="Filter" showLabel="false"/>
+              <control idMso="SortClear" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGAdvancedFilter" visible="true">
+              <control idMso="AdvancedFilterDialog" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGCircularReferences" visible="true">
+              <control idMso="ErrorCheckingMenu" showLabel="false"/>
+              <button idMso="FormulaEvaluate" showLabel="false"/>
+            </buttonGroup>
+          </box>
+        </group>
+        <group id="GroupReview" label="Review">
+          <box id="BoxReviewOp1" boxStyle="horizontal">
+            <button idMso="NewThreadedComment" showLabel="false"/>
+            <button idMso="PreviousThreadedComment" showLabel="false"/>
+            <button idMso="NextThreadedComment" showLabel="false"/>
+            <button idMso="DeleteThreadedComment" showLabel="false"/>
+          </box>
+          <box id="BoxReviewOp2" boxStyle="horizontal">
+            <toggleButton idMso="ShowThreadedComments" showLabel="false"/>
+            <button idMso="Spelling" showLabel="false"/>
+            <button idMso="Thesaurus" showLabel="false"/>
+          </box>
+          <box id="BoxReviewOp3" boxStyle="horizontal">
+            <button idMso="SheetProtect" showLabel="false"/>
+            <menu idMso="ReviewProtectWorkbookMenu" visible="true" showLabel="false"/>
+            <button idMso="Collaborate" showLabel="false"/>
+          </box>
+        </group>
+        <group id="GroupNavigate" label="Navigate">
+          <box id="BoxNavigate" boxStyle="vertical">
+            <buttonGroup id="BGDocumentNav" visible="true">
+              <control idMso="ObjectAlignMenu" showLabel="false"/>
+              <control idMso="ObjectRotateGallery" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGPageNav" visible="true">
+              <button idMso="PagePrevious" showLabel="false"/>
+              <button idMso="PageNext" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGWebControls" visible="true">
+              <button idMso="WebGoBack" showLabel="false"/>
+              <button idMso="WebGoForward" showLabel="false"/>
+            </buttonGroup>
+          </box>
+        </group>
+        <group id="GroupDeveloper" label="Developer">
+          <box id="BoxDeveloper1" boxStyle="vertical">
+            <button idMso="MacroRecord" showLabel="false"/>
+            <button idMso="MacroPlay" showLabel="false"/>
+            <button idMso="MacroSecurity" showLabel="false"/>
+          </box>
+          <button idMso="VisualBasic" size="large"/>
+        </group>
+        <group id="GroupControls" label="Controls">
+          <gallery idMso="ControlsGallery" size="large"/>
+          <box id="BoxControls1" boxStyle="vertical">
+            <toggleButton idMso="DesignMode" showLabel="false"/>
+            <button idMso="ControlProperties" showLabel="false"/>
+            <button idMso="ViewCode" showLabel="false"/>
+          </box>
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>
+

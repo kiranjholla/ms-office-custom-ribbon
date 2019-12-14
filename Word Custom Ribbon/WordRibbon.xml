@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="LoadWordRibbon">
+  <ribbon>
+    <tabs>
+      <tab id="CustomTab" label="My Tab" insertBeforeMso="TabHome">
+        <group id="GroupStandard" label="Standard Controls">
+          <box id="BoxFileOp" boxStyle="vertical">
+            <button idMso="FileNew" showLabel="false"/>
+            <button idMso="FileOpen" showLabel="false"/>
+            <button idMso="FileClose" showLabel="false"/>
+          </box>
+          <separator id="sep1"/>
+          <box id="BoxSaveOp" boxStyle="vertical">
+            <button idMso="FileSave" showLabel="false"/>
+            <button idMso="FileSaveAsOtherFormats" showLabel="false"/>
+            <button idMso="FileSendAsAttachment" showLabel="false"/>
+          </box>
+          <separator id="sep2"/>
+          <box id="BoxPrintOp" boxStyle="vertical">
+            <button idMso="FilePrintQuick" showLabel="false"/>
+            <control idMso="FilePrintPreview" showLabel="false"/>
+            <button idMso="PageSetupDialog" showLabel="false"/>
+          </box>
+        </group>
+        <group id="GroupEdit" label="Edit">
+          <splitButton idMso="PasteMenu" showLabel="false"/>
+          <button idMso="Copy" showLabel="false"/>
+          <button idMso="Cut" showLabel="false"/>
+        </group>
+        <group id="GroupFromatting" label="Formatting Tools">
+          <box id="BoxFontSelection" boxStyle="horizontal">
+            <comboBox idMso="Font" visible="true"/>
+            <comboBox idMso="FontSize" visible="true"/>
+            <buttonGroup id="BGFontSize" visible="true">
+              <button idMso="FontSizeIncreaseWord" showLabel="false"/>
+              <button idMso="FontSizeDecreaseWord" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGRevealFormatting" visible="true">
+              <button idMso="RevealFormatting" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGStylesPage" visible="true">
+              <button idMso="StylesPane" showLabel="false"/>
+            </buttonGroup>
+          </box>
+          <box id="BoxFormatOp1" boxStyle="horizontal">
+            <comboBox idMso="StyleGalleryClassic" showLabel="false"/>
+            <buttonGroup id="BGFontStyles" visible="true">
+              <control idMso="ChangeStylesMenu" showLabel="false"/>
+              <toggleButton idMso="Bold" showLabel="false"/>
+              <toggleButton idMso="Italic" showLabel="false"/>
+              <control idMso="UnderlineGallery" showLabel="false"/>
+              <toggleButton idMso="Strikethrough" showLabel="false"/>
+            </buttonGroup>
+          </box>
+          <box id="BoxFormatOp2" boxStyle="horizontal">
+            <buttonGroup id="BGFontColor" visible="true">
+              <control idMso="TextHighlightColorPicker" showLabel="false"/>
+              <control idMso="FontColorPicker" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGCaseControl" visible="true">
+              <toggleButton idMso="TextSmallCaps" showLabel="false"/>
+              <gallery idMso="ChangeCaseGallery" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGMoreFontStyles" visible="true">
+              <toggleButton idMso="Subscript" showLabel="false"/>
+              <toggleButton idMso="Superscript" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGClearFormats" visible="true">
+              <button idMso="ClearFormatting" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGFormatPainter" visible="true">
+              <control idMso="FormatPainter" showLabel="false"/>
+            </buttonGroup>
+          </box>
+        </group>
+        <group id="GroupParagraph" label="Paragraph and Layout">
+          <box id="BoxAlign" boxStyle="horizontal">
+            <buttonGroup id="BGTextAlignment" visible="true">
+              <toggleButton idMso="AlignLeft" showLabel="false"/>
+              <toggleButton idMso="AlignCenter" showLabel="false"/>
+              <toggleButton idMso="AlignRight" showLabel="false"/>
+              <toggleButton idMso="AlignJustifyWithMixedLanguages" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGVerticalAlign" visible="true">
+              <menu idMso="LineSpacingMenu" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGParaProps" visible="true">
+              <control idMso="ShadingColorPicker" showLabel="false"/>
+              <splitButton idMso="TableBordersMenu" showLabel="false"/>
+            </buttonGroup>
+          </box>
+          <box id="BoxBullets" boxStyle="horizontal">
+            <buttonGroup id="BGBullets" visible="true">
+              <control idMso="BulletsGalleryWord" showLabel="false"/>
+              <control idMso="NumberingGalleryWord" showLabel="false"/>
+              <gallery idMso="MultilevelListGallery" showLabel="false"/>
+              <control idMso="BulletsAndNumberingBulletsDialog" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGIndent" visible="true">
+              <button idMso="IndentDecreaseWord" showLabel="false"/>
+              <button idMso="IndentIncreaseWord" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGSort" visible="true">
+              <button idMso="SortDialogClassic" showLabel="false"/>
+            </buttonGroup>
+          </box>
+          <box id="BoxLayout" boxStyle="horizontal">
+            <buttonGroup id="BGPageProperties" visible="true">
+              <control idMso="HeaderInsertGallery" showLabel="false"/>
+              <control idMso="FooterInsertGallery" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGPageNumbers" visible="true">
+              <control idMso="HeaderFooterPageNumberInsert" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGBreaks" visible="true">
+              <control idMso="BreaksGallery" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGAlignment" visible="true">
+              <menu idMso="ObjectAlignMenu" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGShowAll" visible="true">
+              <toggleButton idMso="ParagraphMarks" showLabel="false"/>
+            </buttonGroup>
+          </box>
+          <box id="BoxParagraphLines" boxStyle="vertical">
+            <button idMso="ParagraphKeepLinesTogether" label="Keep lines together" showLabel="true" showImage="false"/>
+            <toggleButton idMso="ParagraphKeepWithNext" label="Keep with next" showLabel="true" showImage="false"/>
+            <button idMso="BreakParagraphPageBreakBefore" label="Page-break before" showLabel="true" showImage="false"/>
+          </box>
+        </group>
+        <group id="GroupInsert" label="Insert">
+          <box id="BoxInsert1" boxStyle="vertical">
+            <control idMso="TableInsertGallery" showLabel="false"/>
+            <button idMso="PictureInsertFromFile" showLabel="false"/>
+            <button idMso="ClipArtInsertDialog" showLabel="false"/>
+          </box>
+          <separator id="sep3"/>
+          <box id="BoxInsert2" boxStyle="vertical">
+            <button idMso="ChartInsert" showLabel="false"/>
+            <control idMso="InsertBuildingBlocksEquationsGallery" showLabel="false"/>
+            <control idMso="SymbolInsertGallery" showLabel="false"/>
+          </box>
+          <separator id="sep4"/>
+          <box id="BoxInsert3" boxStyle="vertical">
+            <button idMso="FrameInsertHorizontal" showLabel="false"/>
+            <control idMso="DropCapInsertGallery" showLabel="false"/>
+            <control idMso="PropertyInsert" showLabel="false"/>
+          </box>
+        </group>
+        <group id="GroupReference" label="Reference">
+          <box id="BoxReference1" boxStyle="horizontal">
+            <buttonGroup id="BGReference1" visible="true">
+              <button idMso="FieldInsert" showLabel="false"/>
+              <button idMso="BookmarkInsert" showLabel="false"/>
+              <control idMso="InsertLinkGallery" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGReference2" visible="true">
+              <button idMso="FootnoteInsert" showLabel="false"/>
+              <button idMso="EndnoteInsertWord" showLabel="false"/>
+              <button idMso="FootnotesEndnotesShow" showLabel="false"/>
+            </buttonGroup>
+          </box>
+          <box id="BoxReference4" boxStyle="horizontal">
+            <buttonGroup id="BGReference3" visible="true">
+              <control idMso="TableOfContentsGallery" showLabel="false"/>
+              <button idMso="TableOfFiguresInsert" showLabel="false"/>
+              <button idMso="CaptionInsert" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGReference4" visible="true">
+              <control idMso="CitationInsert" showLabel="false"/>
+              <button idMso="BibliographyManageSources" showLabel="false"/>
+            </buttonGroup>
+          </box>
+          <box id="BoxReference5" boxStyle="horizontal">
+            <comboBox idMso="BibliographyStyle" showLabel="false"/>
+            <control idMso="BibliographyGallery" showLabel="false"/>
+          </box>
+        </group>
+        <group id="GroupDrawing" label="Drawing">
+          <box id="BoxDrawing" boxStyle="vertical">
+            <control idMso="GalleryAllShapesAndCanvas" showLabel="false"/>
+            <button idMso="SmartArtInsert" showLabel="false"/>
+            <button idMso="SelectObjects" showLabel="false"/>
+          </box>
+        </group>
+        <group id="GroupReview" label="Review">
+          <box id="BoxTrackChanges" boxStyle="horizontal">
+            <buttonGroup id="BGReviewControls" visible="true">
+              <button idMso="SetLanguage" showLabel="false"/>
+              <button idMso="SpellingAndGrammar" showLabel="false"/>
+              <button idMso="Thesaurus" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGProtection" visible="true">
+              <control idMso="ReviewProtectDocumentMenu" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGTrackChanges" visible="true">
+              <splitButton idMso="ReviewTrackChangesMenu" showLabel="false"/>
+              <splitButton idMso="ReviewReviewingPaneMenu" showLabel="false"/>
+              <control idMso="ReviewCompareMenu" showLabel="false"/>
+            </buttonGroup>
+          </box>
+          <box id="BoxDisplayReview" boxStyle="horizontal">
+            <control idMso="ReviewDisplayForReview" visible="true"/>
+            <buttonGroup id="BGShowMarkupMenu" visible="true">
+              <control idMso="ReviewShowMarkupMenu" showLabel="false"/>
+            </buttonGroup>
+          </box>
+          <box id="BoxComments" boxStyle="horizontal">
+            <buttonGroup id="BGCreateComments" visible="true">
+              <button idMso="ReviewNewComment" showLabel="false"/>
+              <splitButton idMso="ReviewDeleteCommentsMenu" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGNavigateComments" visible="true">
+              <button idMso="ReviewPreviousCommentWord" showLabel="false"/>
+              <button idMso="ReviewNextCommentWord" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGDecision" visible="true">
+              <button idMso="ReviewPreviousChange" showLabel="false"/>
+              <button idMso="ReviewNextChange" showLabel="false"/>
+              <splitButton idMso="ReviewAcceptChangeMenu" showLabel="false"/>
+              <splitButton idMso="ReviewRejectChangeMenu" showLabel="false"/>
+            </buttonGroup>
+          </box>
+        </group>
+        <group id="GroupNavigate" label="Navigate">
+          <box id="BoxNavigate" boxStyle="vertical">
+            <buttonGroup id="BGDocumentNav" visible="true">
+              <button idMso="StartOfDocument" showLabel="false"/>
+              <button idMso="EndOfDocument" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGLineNav" visible="true">
+              <button idMso="StartOfLine" showLabel="false"/>
+              <button idMso="EndOfLine" showLabel="false"/>
+            </buttonGroup>
+            <buttonGroup id="BGWebControls" visible="true">
+              <button idMso="WebGoBack" showLabel="false"/>
+              <button idMso="WebGoForward" showLabel="false"/>
+            </buttonGroup>
+          </box>
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>
+
