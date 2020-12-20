@@ -63,53 +63,53 @@ Thanks to
         <Directory Id="MANUFACTURERFOLDER" Name="Kiran J. Holla">
           <Directory Id="INSTALLFOLDER" Name="Office Custom Ribbon" />
           <Component Id="Registry_Excel_FriendlyName">
-            <RegistryValue Id="RegKey_Excel_FriendlyName" Root="HKLM"
-                           Key="Software\Microsoft\Office\Excel\AddIns\Word Custom Ribbon"
+            <RegistryValue Id="RegKey_Excel_FriendlyName" Root="HKCU"
+                           Key="Software\Microsoft\Office\Excel\AddIns\Excel Custom Ribbon"
                            Name="FriendlyName"
                            Value="Excel Custom Ribbon"
                            Type="string" KeyPath="yes" />
           </Component>
           <Component Id="Registry_Word_FriendlyName">
-            <RegistryValue Id="RegKey_Word_FriendlyName" Root="HKLM"
+            <RegistryValue Id="RegKey_Word_FriendlyName" Root="HKCU"
                            Key="Software\Microsoft\Office\Word\AddIns\Word Custom Ribbon"
                            Name="FriendlyName"
                            Value="Word Custom Ribbon"
                            Type="string" KeyPath="yes" />
           </Component>
           <Component Id="Registry_Excel_Description">
-            <RegistryValue Id="RegKey_Excel_Description" Root="HKLM"
+            <RegistryValue Id="RegKey_Excel_Description" Root="HKCU"
                            Key="Software\Microsoft\Office\Excel\AddIns\Excel Custom Ribbon"
                            Name="Description"
                            Value="Excel Custom Ribbon"
                            Type="string" KeyPath="yes" />
           </Component>
           <Component Id="Registry_Word_Description">
-            <RegistryValue Id="RegKey_Word_Description" Root="HKLM"
+            <RegistryValue Id="RegKey_Word_Description" Root="HKCU"
                            Key="Software\Microsoft\Office\Word\AddIns\Word Custom Ribbon"
                            Name="Description"
                            Value="Word Custom Ribbon"
                            Type="string" KeyPath="yes" />
           </Component>
           <Component Id="Registry_Excel_Manifest">
-            <RegistryValue Id="RegKey_Excel_Manifest" Root="HKLM"
+            <RegistryValue Id="RegKey_Excel_Manifest" Root="HKCU"
                            Key="Software\Microsoft\Office\Excel\AddIns\Excel Custom Ribbon"
-                           Name="Manifest" Value="[INSTALLFOLDER]Excel Custom Ribbon.vsto|vstolocal"
+                           Name="Manifest" Value="file:///[INSTALLFOLDER]Excel Custom Ribbon.vsto|vstolocal"
                            Type="string" KeyPath="yes" />
           </Component>
           <Component Id="Registry_Word_Manifest">
-            <RegistryValue Id="RegKey_Word_Manifest" Root="HKLM"
+            <RegistryValue Id="RegKey_Word_Manifest" Root="HKCU"
                            Key="Software\Microsoft\Office\Word\AddIns\Word Custom Ribbon"
-                           Name="Manifest" Value="[INSTALLFOLDER]Word Custom Ribbon.vsto|vstolocal"
+                           Name="Manifest" Value="file:///[INSTALLFOLDER]Word Custom Ribbon.vsto|vstolocal"
                            Type="string" KeyPath="yes" />
           </Component>
           <Component Id="Registry_Excel_LoadBehavior">
-            <RegistryValue Id="RegKey_Excel_LoadBehavior" Root="HKLM"
+            <RegistryValue Id="RegKey_Excel_LoadBehavior" Root="HKCU"
                            Key="Software\Microsoft\Office\Excel\AddIns\Excel Custom Ribbon"
                            Name="LoadBehavior" Value="3"
                            Type="integer" KeyPath="yes" />
           </Component>
           <Component Id="Registry_Word_LoadBehavior">
-            <RegistryValue Id="RegKey_Word_LoadBehavior" Root="HKLM"
+            <RegistryValue Id="RegKey_Word_LoadBehavior" Root="HKCU"
                            Key="Software\Microsoft\Office\Word\AddIns\Word Custom Ribbon"
                            Name="LoadBehavior" Value="3"
                            Type="integer" KeyPath="yes" />
