@@ -9,7 +9,7 @@ Thanks to
   For the MIT License text itself:        https://opensource.org/licenses/MIT
 -->
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
-	<Product Id="*" Name="Office Custom Ribbon" Language="1033" Version="3.0.0.0" Manufacturer="Kiran J. Holla" UpgradeCode="c1489b63-ab9e-4fc0-a39a-2dae93854b72">
+	<Product Id="*" Name="Office Custom Ribbon" Language="1033" Version="3.0.0.1" Manufacturer="Kiran J. Holla" UpgradeCode="c1489b63-ab9e-4fc0-a39a-2dae93854b72">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" InstallPrivileges="elevated" />
 
     <WixVariable Id="WixUILicenseRtf" Value="mit.rtf" />
